@@ -2,4 +2,5 @@ bin/
 lib/
 __pycache__/
 config.py
-*.log
+geckodriver.log
+pyvenv.cfg
