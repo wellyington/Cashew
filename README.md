@@ -39,6 +39,9 @@ And finaly create a file called `config.py` with the variables below:
 ##### MySQL Configurations
 
 host = "localhost"
+
 database = "your-database"
+
 myuser = "your-user"
+
 mypass = "your-password"
