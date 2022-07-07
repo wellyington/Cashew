@@ -42,4 +42,3 @@ host = "localhost"
 database = "your-database"
 myuser = "your-user"
 mypass = "your-password"
-
