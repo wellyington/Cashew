@@ -3,7 +3,7 @@ Prototype of Functions for Instagram Automation
 
 Cashew is an open source collection of scripts to help Instagram Managers / Community Managers to have automated functions acros the platform.
 
-#### Requirements
+##### Requirements
 
 1. Python 3
 1. MySQL / MyISAM Engine
@@ -29,19 +29,3 @@ Cashew is an open source collection of scripts to help Instagram Managers / Comm
 1. urllib3==1.26.9
 1. webdriver-manager==3.5.4
 1. wsproto==1.1.0
-
-Once you have Python 3, pip3 and MySQL installed in your computer, make sure you create a virtual environment for the project and install requiriments.txt using pip3.
-
-You will also need to create a MySQL database with the tables that contain in the file `mysql_tables.sql`.
-
-And finaly create a file called `config.py` with the variables below:
-
-##### MySQL Configurations
-
-host = "localhost"
-
-database = "your-database"
-
-myuser = "your-user"
-
-mypass = "your-password"
