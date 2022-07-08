@@ -37,9 +37,9 @@ def doengagement(username, password, hashtag, limit):
 	options.headless = True
 	driver = webdriver.Firefox(options=options, service=Service(GeckoDriverManager().install()))
 	driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher")
-	print("Opening Instagram")
+	print("[!] Opening Instagram")
 	timecount(5)
-	print("Handling Cookies")
+	print("[!] Handling Cookies")
 	driver.find_element(by=By.XPATH, value="//html/body/div[4]/div/div/button[1]").click()
 	timecount(15)
 	userLogin = driver.find_element(by=By.NAME, value="username")
@@ -49,14 +49,13 @@ def doengagement(username, password, hashtag, limit):
 	submit = driver.find_element(by=By.TAG_NAME, value="form")
 	submit.submit()
 	timecount(5)
-	print("Opening Hashtag #" + hashtag)
+	print("[!] Opening Hashtag #" + hashtag)
 	driver.get("https://www.instagram.com/explore/tags/" + hashtag)
 	timecount(25)
 	engagements = 0
 	engLimit = int(limit)
 	driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[1]/div/div/div[1]/div[1]/section/main/article/div[1]/div/div/div[1]/div[1]").click()
 	timecount(5)
-	print("Starting Engagement: ")
 	while engagements != engLimit:
 		try:
 			NULL_ = None
@@ -72,9 +71,9 @@ def doengagement(username, password, hashtag, limit):
 			sqlCheck = "Select username, url From engagements_hashtag where username = %s and url = %s"
 			cursor.execute(sqlCheck,verification)
 			row_count = cursor.rowcount
+			print("[+] Starting Engagement")
 			if row_count == 0:
 				try:
-					print("Starting Engagement")
 					engagement = (NULL_, hashtag, username, profile, url, _date, _time)
 					sql = "INSERT INTO `engagements_hashtag`(`ID`,`hashtag`,`username`,`profile`,`url`,`date`,`time`) VALUES(%s,%s,%s,%s,%s,%s,%s)"
 					cursor.execute(sql,engagement)
@@ -82,7 +81,7 @@ def doengagement(username, password, hashtag, limit):
 					driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button").click()
 					engagements = engagements + 1
 					timecount(randTime)
-					print("Engagement: " + str(engagements) + "     ")
+					print("+++ Engagement: " + str(engagements) + "     ")
 					timecount(randTime)
 					try:
 						driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div[2]/button").click()
@@ -95,7 +94,7 @@ def doengagement(username, password, hashtag, limit):
 						driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div/button").click()
 				timecount(randTime)
 			else:
-				print("Post already engaged!")
+				print("[x] Post already engaged!")
 				timecount(randTime)
 				try:
 					driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div[2]/button").click()

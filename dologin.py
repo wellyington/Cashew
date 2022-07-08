@@ -5,18 +5,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+from inc_timecount import timecount
 import os
 import datetime
-
-#Timer 
-
-def timecount(seconds):
-    while seconds:
-        min, sec = divmod(seconds, 60)
-        count = 'Timer: {:d}min:{:d}sec'.format(min, sec)
-        print(count, end='\r')
-        sleep(1)
-        seconds -= 1
 
 def dologin(username, password, hashtag, limit):
 	driver = webdriver.Firefox(executable_path="./geckodriver")
