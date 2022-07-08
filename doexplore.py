@@ -49,6 +49,7 @@ def doexplore(username, password, limit):
 	engLimit = int(limit)
 	driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[1]/div/div/div[1]/div[1]/section/main/div/div[1]/div/div[1]/div[2]/div/a/div/div[2]").click()
 	timecount(5)
+	print("[+] Starting Engagement")
 	while engagements != engLimit:
 		try:
 			NULL_ = None
@@ -63,7 +64,6 @@ def doexplore(username, password, limit):
 			sqlCheck = "Select username, url From engagements_explore where username = %s and url = %s"
 			cursor.execute(sqlCheck,verification)
 			row_count = cursor.rowcount
-			print("[+] Starting Engagement")
 			if row_count == 0:
 				try:
 					engagement = (NULL_, username, profile, url, _date, _time)
@@ -100,7 +100,7 @@ def doexplore(username, password, limit):
 				driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[1]/div/div/div/button").click()
 			timecount(5)
 	else:
-		print("[+] Engagement complete.")
+		print("[!] Engagement complete.")
 		driver.quit()
 
 instaUser = input("Username: ")
