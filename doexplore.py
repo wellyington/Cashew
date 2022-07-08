@@ -32,9 +32,9 @@ randTime = random.randint(5, 20)
 
 # doengagement() function
 
-def doengagement(username, password, hashtag, limit):
+def doexplore(username, password, limit):
 	options = Options()
-	options.headless = True
+	options.headless = False
 	driver = webdriver.Firefox(options=options, service=Service(GeckoDriverManager().install()))
 	driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher")
 	print("Opening Instagram")
@@ -49,19 +49,18 @@ def doengagement(username, password, hashtag, limit):
 	submit = driver.find_element(by=By.TAG_NAME, value="form")
 	submit.submit()
 	timecount(5)
-	print("Opening Hashtag #" + hashtag)
-	driver.get("https://www.instagram.com/explore/tags/" + hashtag)
+	print("Opening Explore")
+	driver.get("https://www.instagram.com/explore/")
 	timecount(25)
 	engagements = 0
 	engLimit = int(limit)
-	driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[1]/div/div/div[1]/div[1]/section/main/article/div[1]/div/div/div[1]/div[1]").click()
+	driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[1]/div/div/div[1]/div[1]/section/main/div/div[1]/div/div[1]/div[2]/div/a/div/div[2]").click()
 	timecount(5)
 	print("Starting Engagement: ")
 	while engagements != engLimit:
 		try:
 			NULL_ = None
 			date_time = datetime.datetime.now()
-			hashtag = instaHashtag
 			username = instaUser
 			profile = driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/header/div[2]/div[1]/div[1]/div/span/a").text
 			url = driver.current_url
@@ -69,14 +68,14 @@ def doengagement(username, password, hashtag, limit):
 			_time = str(date_time.strftime("%X"))
 			cursor = myconn.cursor(buffered=True)
 			verification = (username, url)
-			sqlCheck = "Select username, url From engagements_hashtag where username = %s and url = %s"
+			sqlCheck = "Select username, url From engagements_explore where username = %s and url = %s"
 			cursor.execute(sqlCheck,verification)
 			row_count = cursor.rowcount
 			if row_count == 0:
 				try:
 					print("Starting Engagement")
-					engagement = (NULL_, hashtag, username, profile, url, _date, _time)
-					sql = "INSERT INTO `engagements_hashtag`(`ID`,`hashtag`,`username`,`profile`,`url`,`date`,`time`) VALUES(%s,%s,%s,%s,%s,%s,%s)"
+					engagement = (NULL_, username, profile, url, _date, _time)
+					sql = "INSERT INTO `engagements_explore`(`ID`,`username`,`profile`,`url`,`date`,`time`) VALUES(%s,%s,%s,%s,%s,%s)"
 					cursor.execute(sql,engagement)
 					myconn.commit()
 					driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button").click()
@@ -114,7 +113,6 @@ def doengagement(username, password, hashtag, limit):
 
 instaUser = input("Username: ")
 instaPass = getpass("Password: ")
-instaHashtag = input("Hashtag: #")
 instaLimit = input("Limit: ")
 
-doengagement(instaUser, instaPass, instaHashtag, instaLimit)
+doexplore(instaUser, instaPass, instaLimit)
