@@ -34,7 +34,7 @@ randTime = random.randint(5, 20)
 
 def doexplore(username, password, limit):
 	options = Options()
-	options.headless = False
+	options.headless = True
 	driver = webdriver.Firefox(options=options, service=Service(GeckoDriverManager().install()))
 	driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher")
 	print("Opening Instagram")
