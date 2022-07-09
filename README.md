@@ -48,4 +48,8 @@ Windows: HeidiSQL - https://www.heidisql.com/ <br>Linux: DBeaver - https://dbeav
 
 # Step 3
 
-Clone this repository
+Clone this repository from your terminal.
+
+$ git clone https://github.com/wellyington/Cashew
+
+Or using GitHub Desktop<br>https://desktop.github.com/ (Windows)<br>https://gist.github.com/berkorbay/6feda478a00b0432d13f1fc0a50467f1 (Linux)
