@@ -15,6 +15,7 @@ import datetime
 import random
 import mysql.connector
 from config import host, database, myuser, mypass
+from xpath import xpath_p
 
 # Rand time
 randTime = random.randint(5, 20)
@@ -47,7 +48,7 @@ def doexplore(username, password, limit):
 	timecount(25)
 	engagements = 0
 	engLimit = int(limit)
-	driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[1]/div/div/div[1]/div[1]/section/main/div/div[1]/div/div[1]/div[2]/div/a/div/div[2]").click()
+	driver.find_element(by=By.XPATH, value=xpath_p).click()
 	timecount(5)
 	print("[+] Starting Engagement")
 	while engagements != engLimit:
