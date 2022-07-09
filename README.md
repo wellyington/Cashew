@@ -29,3 +29,23 @@ Cashew is an open source collection of scripts to help Instagram Managers / Comm
 1. urllib3==1.26.9
 1. webdriver-manager==3.5.4
 1. wsproto==1.1.0
+
+# Step 1
+
+Make sure you have the latest version of Python installed. 
+
+Windows: Head to www.python.org and download the latest stable version of Python and certify that you add Python to the PATH during the setup.
+
+Linux & MacOS: Linux and MacOS come with Python pre-installed.
+
+# Step 2
+
+Download and install MySQL Community Server at www.mysql.org.
+
+Download a Database Manager software of your preference. 
+
+Windows: HeidiSQL - https://www.heidisql.com/ <br>Linux: DBeaver - https://dbeaver.io/
+
+# Step 3
+
+Clone this repository
