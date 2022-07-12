@@ -40,9 +40,9 @@ Linux & MacOS: Linux and MacOS come with Python pre-installed.
 
 # Step 2
 
-Download and install MySQL Community Server at www.mysql.org.
+2.1: Download and install MySQL Community Server at www.mysql.org.
 
-Download a Database Manager software of your preference. 
+2:2: Download a Database Manager software of your preference. 
 
 Windows: HeidiSQL - https://www.heidisql.com/ <br>Linux: DBeaver - https://dbeaver.io/
 
@@ -53,3 +53,19 @@ Clone this repository from your terminal.
 $ git clone https://github.com/wellyington/Cashew
 
 Or using GitHub Desktop<br>https://desktop.github.com/ (Windows)<br>https://gist.github.com/berkorbay/6feda478a00b0432d13f1fc0a50467f1 (Linux)
+
+# Step 4
+
+Create a MySQL Database named `cashew` and the required tables using the file `mysql_tables.sql` with the Database manager that you elected.
+
+# Step 5
+
+Create a file named `config.py` at the root folder with the project with the following content.
+
+`host = "localhost", database = "cashew", myuser = "root", mypass = "your-database-password"`
+
+# Step 6
+
+Test if everything is working executing the script `doengagement.py`, if you are prompt username and password it means that everything is configured properly and ready to run.
+
+`$ python3 doengagement.py`

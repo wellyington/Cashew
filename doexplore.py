@@ -15,7 +15,7 @@ import datetime
 import random
 import mysql.connector
 from config import host, database, myuser, mypass
-from xpath import xpath_p
+from inc_xpath import xpath_p
 
 # Rand time
 randTime = random.randint(5, 20)
