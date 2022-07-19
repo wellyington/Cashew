@@ -14,7 +14,7 @@ import datetime
 import random
 import mysql.connector
 from config import host, database, myuser, mypass
-from inc_xpath import xpath_p
+from inc_xpath import xpath_p, xpath_profile_p
 
 # MySQL Connector
 
@@ -64,7 +64,7 @@ def doengagement(username, password, hashtag, limit):
 			date_time = datetime.datetime.now()
 			hashtag = instaHashtag
 			username = instaUser
-			profile = driver.find_element(by=By.XPATH, value="//html/body/div[1]/div/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div/article/div/div[2]/div/div/div[1]/div/header/div[2]/div[1]/div[1]/div/span/a").text
+			profile = driver.find_element(by=By.XPATH, value=xpath_profile_p).text
 			url = driver.current_url
 			_date = str(date_time.date())
 			_time = str(date_time.strftime("%X"))

@@ -28,7 +28,7 @@ myconn = mysql.connector.connect(host=host, database=database, user=myuser, pass
 
 def doexplore(username, password, limit):
 	options = Options()
-	options.headless = True
+	options.headless = False
 	driver = webdriver.Firefox(options=options, service=Service(GeckoDriverManager().install()))
 	driver.get("https://www.instagram.com/accounts/login/?source=auth_switcher")
 	print("[!] Opening Instagram")
