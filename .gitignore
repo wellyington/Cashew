@@ -4,3 +4,4 @@ __pycache__/
 config.py
 geckodriver.log
 pyvenv.cfg
+.ipynb_checkpoints/
