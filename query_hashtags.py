@@ -4,7 +4,7 @@ import pandas as pd
 
 data = {
 	"Hashtag": [],
-	"Total Engagements": [],
+	"Engagements": [],
 }
 dataframe = pd.DataFrame(data)
 myconn = mysql.connector.connect(host=host, database=database, user=myuser, password=mypass)
@@ -17,5 +17,5 @@ for hashtag in all_hashtags:
 	sql_hashtag_count = "SELECT hashtag From engagements_hashtag Where hashtag = %s"
 	cursor.execute(sql_hashtag_count,hashtag_check)
 	hashtag_total = str(cursor.rowcount)
-	dataframe.loc[len(dataframe.index)] = [hashtag[0], hashtag_total]
-print(dataframe)
+	dataframe.loc[len(dataframe.index)] = [hashtag[0], int(hashtag_total)]
+print(dataframe.nlargest(100, 'Engagements'))
